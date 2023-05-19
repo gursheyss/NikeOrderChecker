@@ -24,71 +24,42 @@ module.exports = {
                     name: "Nike Order Checker",
                 })
                 .setTitle(`${orderData.productInfo.title} - ${orderData.productInfo.color}`)
-                .addFields(
-                    {
-                        name: "SKU",
-                        value: `${orderData.productInfo.styleColor}`,
-                        inline: true
-                    },
-                    {
-                        name: "Size",
-                        value: `${orderData.productInfo.size}`,
-                        inline: true
-                    },
-                    {
-                        name: "Price",
-                        value: `$${orderData.totalPrice.toFixed(2)}`,
-                        inline: true
-                    },
-                    {
-                        name: "Status",
-                        value: `${orderData.orderStatus.charAt(0).toUpperCase() + orderData.orderStatus.slice(1)}`,
-                        inline: true
-                    },
-                    {
-                        name: "Last 4 of Card",
-                        value: `${orderData.lastFour}`,
-                        inline: true
-                    },
-                    {
-                        name: "Purchase Date",
-                        value: `${orderData.orderPurchaseDate.substring(orderData.orderPurchaseDate.indexOf(" - ") + 3)}`,
-                        inline: true
-                    },
-                    {
-                        name: "Returnable?",
-                        value: orderData.returnable === true ? "Yes" : "No",
-                        inline: true
-                    },
-                    {
-                        name: "Tracking Link",
-                        value: `[Link](${orderData.trackingLink})`,
-                        inline: true
-                    },
-                    {
-                        name: "Address",
-                        value: `${orderData.addressInfo.address1}\n${orderData.addressInfo.address2}\n${orderData.addressInfo.city}, ${orderData.addressInfo.state}\n${orderData.addressInfo.zipCode}`,
-                        inline: true
-                    },
-                    {
-                        name: "Name",
-                        value: `${orderData.recipientInfo.firstName} ${orderData.recipientInfo.lastName}`,
-                        inline: true
-                    },
-                    {
-                        name: "Phone Number",
-                        value: `${orderData.contactInfo.dayPhoneNumber}`,
-                        inline: true
-                    },
-                    {
-                        name: "Email",
-                        value: `${orderData.contactInfo.email}`,
-                        inline: true
-                    },
-                )
                 .setThumbnail(`${orderData.productInfo.productImage}`)
                 .setColor("#fabc72")
+                .addFields(
+                    {
+                        name: "Product Info",
+                        value:
+                            `SKU: ${orderData.productInfo.styleColor}
+                            Size: ${orderData.productInfo.size}
+                            Price: $${orderData.totalPrice.toFixed(2)}
+                            Returnable?: ${orderData.returnable === true ? "Yes" : "No"}`,
+                        inline: false
+                    },
+                    {
+                        name: "Order Info",
+                        value:
+                            `Status: ${orderData.orderStatus.charAt(0).toUpperCase() + orderData.orderStatus.slice(1)}
+                            Last 4 of Card: ${orderData.lastFour}
+                            Purchase Date: ${orderData.orderPurchaseDate.substring(orderData.orderPurchaseDate.indexOf(" - ") + 3)}
+                            Tracking Link: [Link](${orderData.trackingLink !== '' ? orderData.trackingLink : 'Not available'})`,
+                        inline: false
+                    },
+                    {
+                        name: "Recipient Info",
+                        value:
+                            `Name: ${orderData.recipientInfo.firstName} ${orderData.recipientInfo.lastName}
+                            Address: ${orderData.addressInfo.address1}
+                            ${orderData.addressInfo.address2 !== '' ? orderData.addressInfo.address2 : ''}
+                            ${orderData.addressInfo.city}, ${orderData.addressInfo.state}
+                            ${orderData.addressInfo.zipCode}
+                            Phone Number: ${orderData.contactInfo.dayPhoneNumber}
+                            Email: ${orderData.contactInfo.email}`,
+                        inline: false
+                    }
+                )
                 .setTimestamp();
+
 
             await interaction.reply({ embeds: [embed] });
         } catch (error) {
