@@ -9,9 +9,9 @@ To run this project, you will need to add the following environment variables to
 
 `BOT_TOKEN` - Token of the bot
 
-`GUILD_ID` - Server ID that the bot is in (Used for deploying commands)
+`GUILD_ID` - Server ID that the bot is in (only used for deploying commands)
 
-`CLIENT_ID` - Client ID of the bot
+`CLIENT_ID` - Client ID of the bot (only used for deploying commands)
 
 ## Installation/Deployment
 
