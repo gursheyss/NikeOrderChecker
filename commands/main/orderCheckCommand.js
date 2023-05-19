@@ -63,8 +63,7 @@ module.exports = {
 
             await interaction.reply({ embeds: [embed] });
         } catch (error) {
-            console.error('Error checking order:', error);
-            await interaction.reply('An error occurred while checking the order.');
+            await interaction.reply(`An error occurred while checking the order.\n${error}`);
         }
     }
 };
