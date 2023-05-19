@@ -1,3 +1,17 @@
+# NikeOrderChecker
+
+A discord bot used to retrieve info about a Nike.com order
+
+Most of the information here was taken from the [discord.js](https://discordjs.guide/#before-you-begin) guide
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`BOT_TOKEN` - Token of the bot
+
+`GUILD_ID` - Server ID that the bot is in (Used for deploying commands)
+
+`CLIENT_ID` - Client ID of the bot
 
 ## Installation/Deployment
 
