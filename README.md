@@ -13,10 +13,15 @@ To run this project, you will need to add the following environment variables to
 
 `CLIENT_ID` - Client ID of the bot (only used for deploying commands)
 
-## Installation/Deployment
+## Installation
+
+### Prerequisites
+
+Install the latest node.js from https://nodejs.org/en
 
 Create an app at https://discord.com/developers/applications/ and invite it to your server
 
+### Deployment
 Clone the project
 
 ```bash
