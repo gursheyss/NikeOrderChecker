@@ -12,13 +12,24 @@ module.exports = {
         .addStringOption(option =>
             option.setName('email')
                 .setDescription('Email of the order you would like to check')
+                .setRequired(true))
+        .addStringOption(option =>
+            option.setName('time_zone')
+                .setDescription('Your Time Zone')
+                .addChoices(
+                    {name: 'PST', value: 'pst'},
+                    {name: 'MST', value: 'mst'},
+                    {name: 'CST', value: 'cst'},
+                    {name: 'EST', value: 'est'},
+                )
                 .setRequired(true)),
     async execute(interaction) {
         const orderNumber = interaction.options.getString('order_number');
         const email = interaction.options.getString('email');
+        const timeZone = interaction.options.getString('time_zone')
 
         try {
-            const orderData = await orderCheckModule.orderCheck(orderNumber, email);
+            const orderData = await orderCheckModule.orderCheck(orderNumber, email, timeZone);
             const embed = new EmbedBuilder()
                 .setAuthor({
                     name: "Nike Order Checker",

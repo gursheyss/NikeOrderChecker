@@ -1,5 +1,5 @@
 module.exports = {
-    orderCheck: async function orderCheck(orderNumber, email) {
+    orderCheck: async function orderCheck(orderNumber, email, timeZone) {
         const options = {
             method: 'GET',
             headers: {
@@ -7,8 +7,13 @@ module.exports = {
             }
         };
 
+        if (timeZone === 'pst') {timeZone = "Los_Angeles"}
+        if (timeZone === 'mst') {timeZone = "Denver"}
+        if (timeZone === 'cst') {timeZone = "Chicago"}
+        if (timeZone === 'est') {timeZone = "New_York"}
+
         try {
-            const response = await fetch(`https://api.nike.com/orders/summary/v1/${orderNumber}?locale=en_us&country=US&language=en&email=${email}&timezone=America%2FLos_Angeles`, options);
+            const response = await fetch(`https://api.nike.com/orders/summary/v1/${orderNumber}?locale=en_us&country=US&language=en&email=${email}&timezone=America%2F${timeZone}`, options);
             const data = await response.json();
 
             const orderData = { //breaks down req response
