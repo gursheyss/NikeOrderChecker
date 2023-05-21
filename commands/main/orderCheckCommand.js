@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const orderCheckModule = require('../../orderCheck.js');
+const interactionType = process.env.INTERACTION;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -71,8 +72,19 @@ module.exports = {
                 )
                 .setTimestamp();
 
-
-            await interaction.reply({ embeds: [embed] });
+            if (interactionType == 'channel') {
+                await interaction.reply({ embeds: [embed] })
+                console.log(`Successfully used command in ${interaction.channelId}`)
+            }
+            else if (interactionType == 'dm') {
+                interaction.user.send({ embeds: [embed] })
+                await interaction.reply('DM sent!')
+                console.log(`Successfully sent dm to ${interaction.user}`)
+            }
+            else {
+                console.log('Invalid interaction type! Must be dm or channel. Check your .env')
+                await interaction.reply('Invalid interaction type! Must be dm or channel. Check your .env')
+            }
         } catch (error) {
             await interaction.reply(`An error occurred while checking the order.\n${error}`);
         }

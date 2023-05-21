@@ -13,6 +13,8 @@ To run this project, you will need to add the following environment variables to
 
 `CLIENT_ID` - Client ID of the bot (only used for deploying commands)
 
+`INTERACTION` - How the bot will reply to the message. `dm` = in a private message and `channel` in the channel the command was used.
+
 ## Installation
 
 ### Prerequisites
