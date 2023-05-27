@@ -79,7 +79,8 @@ module.exports = {
             }
             else if (interactionType == 'dm') {
                 interaction.user.send({ embeds: [embed] })
-                await interaction.reply('DM sent!')
+                await interaction.reply({ content: `Successfully DM\'d order data to ${interaction.user}`, ephemeral: true });
+                await interaction.followUp(`Successfully DM\'d order data to ${interaction.user})`)
                 console.log(`Successfully sent dm to ${interaction.user}`)
             }
             else {
