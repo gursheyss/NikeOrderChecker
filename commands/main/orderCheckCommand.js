@@ -42,31 +42,31 @@ module.exports = {
                     {
                         name: "Product Info",
                         value:
-                            `SKU: ${orderData.productInfo.styleColor}
-                            Size: ${orderData.productInfo.size}
-                            Price: $${orderData.totalPrice.toFixed(2)}
-                            Returnable?: ${orderData.returnable === true ? "Yes" : "No"}`,
+                            `SKU: \`${orderData.productInfo.styleColor}\`
+                            Size: \`${orderData.productInfo.size}\`
+                            Price: \`$${orderData.totalPrice.toFixed(2)}\`
+                            Returnable?: \`${orderData.returnable === true ? "Yes" : "No"}\``,
                         inline: false
                     },
                     {
                         name: "Order Info",
                         value:
-                            `Status: ${orderData.orderStatus.charAt(0).toUpperCase() + orderData.orderStatus.slice(1)}
-                            Last 4 of Card: ${orderData.lastFour}
-                            Purchase Date: ${orderData.orderPurchaseDate.substring(orderData.orderPurchaseDate.indexOf(" - ") + 3)}
+                            `Status: \`${orderData.orderStatus.charAt(0).toUpperCase() + orderData.orderStatus.slice(1)}\`
+                            Last 4 of Card: \`${orderData.lastFour}\`
+                            Purchase Date: \`${orderData.orderPurchaseDate.substring(orderData.orderPurchaseDate.indexOf(" - ") + 3)}\`
                             Tracking Link: [Link](${orderData.trackingLink !== '' ? orderData.trackingLink : 'Not available'})`,
                         inline: false
                     },
                     {
                         name: "Recipient Info",
                         value:
-                            `Name: ${orderData.recipientInfo.firstName} ${orderData.recipientInfo.lastName}
-                            Address: ${orderData.addressInfo.address1}
-                            ${orderData.addressInfo.address2 !== '' ? orderData.addressInfo.address2 : ''}
-                            ${orderData.addressInfo.city}, ${orderData.addressInfo.state}
-                            ${orderData.addressInfo.zipCode}
-                            Phone Number: ${orderData.contactInfo.dayPhoneNumber}
-                            Email: ${orderData.contactInfo.email}`,
+                            `Name: \`${orderData.recipientInfo.firstName} ${orderData.recipientInfo.lastName}\`
+                            Address: \`${orderData.addressInfo.address1}\`
+                            \`${orderData.addressInfo.address2 !== '' ? orderData.addressInfo.address2 : ''}\`
+                            \`${orderData.addressInfo.city}, ${orderData.addressInfo.state}\`
+                            \`${orderData.addressInfo.zipCode}\`
+                            Phone Number: \`${orderData.contactInfo.dayPhoneNumber}\`
+                            Email: \`${orderData.contactInfo.email}\``,
                         inline: false
                     }
                 )
