@@ -73,7 +73,8 @@ module.exports = {
                 .setTimestamp();
 
             if (interactionType == 'channel') {
-                await interaction.reply({ embeds: [embed] })
+                await interaction.reply({ embeds: [embed], ephemeral: true });
+                await interaction.followUp(`Successfully fetched order data for ${interaction.user}`)
                 console.log(`Successfully used command in ${interaction.channelId}`)
             }
             else if (interactionType == 'dm') {
